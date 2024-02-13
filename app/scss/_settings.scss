@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+.container {
+    max-width: $containerWidth;
+    padding: 0 $containerPaddings;
+    margin: 0 auto;
+}
+
+.burger {
+    display: none;
+    width: 30px;
+    height: 18px;
+    align-items: center;
+    position: relative;
+    z-index: 50;
+    justify-content: flex-end;
+
+    span {
+        width: 100%;
+        height: 4px;
+        transform: scale(1);
+        background-color: $burgerColor;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: $burgerColor;
+        height: 4px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+    &.active span {
+        display: none;
+    }
+
+    &.active::before {
+        top: calc(50% - 2px);
+        transform: rotate(-45deg);
+    }
+    &.active::after {
+        bottom: calc(50% - 2px);
+        transform: rotate(45deg);
+    }
+
+    @media screen and (max-width: $tabletScreen) {
+        display: flex;
+    }
+}
+
+.open {
+    display: flex;
+    animation: navAnimate forwards 0.25s ease;
+}
+
+@keyframes navAnimate {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

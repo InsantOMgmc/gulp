@@ -1,0 +1,39 @@
+::root {
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+
+    // Burger
+    --burger-color: #ffffff;
+    --nav-color: #242a32;
+}
+
+// Container
+$containerWidth: 1320px;
+$containerPaddings: 15px;
+
+// Media sizes
+$pcScreen: 1920px;
+$laptopLargeScreen: 1440px;
+$laptopScreen: 1024px;
+$tabletScreen: 768px;
+$mobileLarge: 425px;
+$mobileSmall: 320px;
+
+// Colors
+$primaryColor: var(--primary-color, #e50914);
+$secondaryColor: var(--secondary-color, #ffffff);
+$gray-60: var(--gray-60, #999999);
+$black-15: var(--black-15, #262626);
+// buger Colors
+$burgerColor: var(--burger-color, #ffffff);
+$navColor: var(--nav-color, #242a32);
+
+// Functions
+
+@function adapt($size, $screen) {
+    @return calc($size / $screen * 100vw);
+}
+
+// @function adaptMobile($size, $screen, $coef) {
+//     @return calc($size / $screen * $coef * 100vw);
+// }
