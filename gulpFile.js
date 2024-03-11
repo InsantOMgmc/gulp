@@ -6,10 +6,7 @@ const uglify = require('gulp-uglify-es').default;
 const browserSync = require('browser-sync').create();
 const include = require('gulp-file-include');
 const clean = require('gulp-clean');
-
 const webp = require('gulp-webp');
-const webpCSS = require('gulp-webp-css');
-
 const imagemin = require('gulp-imagemin');
 const gulpWebpHtml = require('gulp-webp-html');
 
@@ -63,20 +60,28 @@ function runStyles() {
     return src('app/scss/main.scss')
         .pipe(concat('style.min.css'))
         .pipe(scss({ outputStyle: 'compressed' }))
-        .pipe(webpCSS())
         .pipe(dest('app/css'))
         .pipe(browserSync.stream());
 }
 exports.runStyles = runStyles;
 
+function runFonts() {
+    return src('app/scss/fonts.scss')
+        .pipe(concat('fonts.css'))
+        .pipe(scss({ outputStyle: 'compressed' }))
+        .pipe(dest('app/css'))
+        .pipe(browserSync.stream());
+}
+
+exports.runFonts = runFonts;
 
 function watching() {
     watch(['app/scss/**/*.scss'], runStyles);
     watch(['app/js/main.js'], runScripts);
     watch(['app/js/**/*.js'], runOtherScripts);
+    watch(['app/scss/fonts.scss'], runFonts);
     watch(['app/components/*', 'app/pages/*'], includeFiles);
     watch(['app/*.html']).on('change', browserSync.reload);
-
 }
 exports.watching = watching;
 

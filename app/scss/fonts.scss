@@ -1,0 +1,6 @@
+@import "mixins";
+
+@include font-face("Acme", "../fonts/acme/Acme-Regular", 400);
+@include font-face("Segoe UI", "../fonts/segoe/SegoeUI", 400);
+@include font-face("Segoe UI", "../fonts/segoe/SegoeUI-SemiBold", 600);
+@include font-face("Segoe UI", "../fonts/segoe/SegoeUI-Bold", 700);
